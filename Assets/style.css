@@ -1,0 +1,19 @@
+.jumbotron-fluid {
+    padding: 0.25rem;
+    text-align: center;
+}
+
+#searchSpace {
+    background-color: rgb(197, 189, 130);
+    height: 30rem;
+}
+
+.row {
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+label {
+    font-size: 1.5rem;
+}
+
