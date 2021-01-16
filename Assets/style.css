@@ -1,19 +1,47 @@
-.jumbotron-fluid {
-    padding: 0.25rem;
-    text-align: center;
-}
 
 #searchSpace {
-    background-color: rgb(197, 189, 130);
+    background-color: rgb(170, 170, 255);
     height: 30rem;
+    border-radius: 10px;
+}
+
+#CResults {
+    background-color: rgb(170, 170, 255);
+    border-radius: 10px;
+}
+
+#forecast-results {
+    flex-wrap: nowrap;
 }
 
 .row {
     margin-right: 0px;
     margin-left: 0px;
+    margin-bottom: 1rem;
+}
+
+.jumbotron-fluid {
+    padding: 0.25rem;
+    text-align: center;
+    background-color: rgb(170, 170, 255);
+}
+
+.card {
+    width: 9rem;
+    height: 10rem;
+    background-color: rgb(106, 106, 255);
+    margin-right: 0.25rem;
+}
+
+.col-md-10 {
+    max-width: 100%;
 }
 
 label {
     font-size: 1.5rem;
+}
+
+button {
+    background-color: rgb(106, 106, 255)!important;
 }
 
