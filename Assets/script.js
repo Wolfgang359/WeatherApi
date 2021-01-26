@@ -1,4 +1,4 @@
-$( document ).ready(function() {
+
 
 var APIkey = "fa8df56b2be812e87178b515521ee95f";
 var Query;
@@ -8,13 +8,13 @@ var CHumid = $("#CHumid");
 var CWindSpeed = $("#CWind");
 var CUV = $("#CUV");
 var CIcon = $("#CIcon");
-var CDate = $("#CDate");
 var lat;
 var long;
+var otherBtns;
 
 
 
-$("button").on("click", function () {
+$("#submit-btn").on("click", function () {
     Query = $("#searchBar").val();
     createCityButton(Query);
     todayAPIInfo(Query);
@@ -22,11 +22,17 @@ $("button").on("click", function () {
 });
 
 
-
+// $(".otherBtn").on("click", function () {
+//     Query = this.text;
+//     createCityButton(Query);
+//     todayAPIInfo(Query);
+//     forecastAPIInfo(Query);
+// });
 
 function createCityButton() {
 
 };
+
 
 function todayAPIInfo(city) {
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + Query + "&appid=" + APIkey + "&units=imperial";
@@ -36,7 +42,7 @@ function todayAPIInfo(city) {
         method: "GET"
     }).then(function (response) {
         console.log(response);
-        CityName.html(response.name);
+        CityName.html(response.name + ", " + response.sys.country);
         CIcon.attr(`src`, `http://openweathermap.org/img/wn/${response.weather[0].icon}@2x.png`);
         CTemp.html(response.main.temp);
         CHumid.html(response.main.humidity);
@@ -50,7 +56,6 @@ function todayAPIInfo(city) {
 };
 
 function UVAPIInfo() {
-    console.log("this is running NOW");
     var queryURL = "https://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + long + "&appid=" + APIkey;
 
     $.ajax({
@@ -59,7 +64,7 @@ function UVAPIInfo() {
     }).then(function (response) {
         console.log(response);
 
-        var UVI  = response.value;
+        var UVI = response.value;
         CUV.html(UVI);
         CUV.removeClass()
         if (UVI <= 2) {
@@ -76,7 +81,6 @@ function UVAPIInfo() {
 };
 
 function forecastAPIInfo(city) {
-    console.log("Grab that forecast, GRAB IT")
     var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + Query + "&appid=" + APIkey + "&units=imperial";
 
     $.ajax({
@@ -87,4 +91,3 @@ function forecastAPIInfo(city) {
     });
 };
 
-});
