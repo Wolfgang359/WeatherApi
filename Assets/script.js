@@ -1,3 +1,5 @@
+$(document).ready (function() {
+    console.log("Ready!");
 
 
 var APIkey = "fa8df56b2be812e87178b515521ee95f";
@@ -8,29 +10,38 @@ var CHumid = $("#CHumid");
 var CWindSpeed = $("#CWind");
 var CUV = $("#CUV");
 var CIcon = $("#CIcon");
+var searchHistory = $("#searchHistory");
 var lat;
 var long;
 var otherBtns;
 
 
 
-$("#submit-btn").on("click", function () {
-    Query = $("#searchBar").val();
-    createCityButton(Query);
-    todayAPIInfo(Query);
-    forecastAPIInfo(Query);
+$("button").on("click", function () {
+    console.log(this.innerHTML);
+    if (this.innerHTML === "Go!") {
+        console.log("This is the go button");
+        Query = $("#searchBar").val();
+        createCityButton(Query);
+        todayAPIInfo(Query);
+        forecastAPIInfo(Query);
+    } else {
+        console.log("this is any other button");
+        Query = this.innerHTML;
+        todayAPIInfo(Query);
+        forecastAPIInfo(Query);
+    };
 });
 
 
-// $(".otherBtn").on("click", function () {
-//     Query = this.text;
-//     createCityButton(Query);
-//     todayAPIInfo(Query);
-//     forecastAPIInfo(Query);
-// });
 
-function createCityButton() {
+function createCityButton(newCity) {
+    console.log("Creating a button for " + newCity);
 
+    var BTN = $("<button>").attr("class", "btn otherBtn");
+    var Txt = document.createTextNode(newCity);
+    BTN.append(Txt);
+    searchHistory.append(BTN);
 };
 
 
@@ -91,3 +102,4 @@ function forecastAPIInfo(city) {
     });
 };
 
+});
