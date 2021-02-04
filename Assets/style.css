@@ -5,6 +5,10 @@
     border-radius: 10px;
 }
 
+#searchHistory {
+    padding-left: 1rem;
+}
+
 #CResults {
     background-color: rgb(170, 170, 255);
     border-radius: 10px;
@@ -12,6 +16,15 @@
 
 #forecast-results {
     flex-wrap: nowrap;
+}
+
+#header {
+    height: 5rem!important;
+}
+
+.card img {
+    height: 3.5rem;
+    
 }
 
 .row {
@@ -26,11 +39,24 @@
     background-color: rgb(170, 170, 255);
 }
 
+.otherBtn {
+    margin-bottom: 5px!important;
+    padding: 0.5rem!important;
+}
+
 .card {
     width: 9rem;
     height: 10rem;
     background-color: rgb(106, 106, 255);
     margin-right: 0.25rem;
+}
+
+.card-body {
+    padding: 1rem;
+}
+
+.card-title {
+    margin-bottom: -0.5rem;
 }
 
 .col-md-10 {
@@ -43,8 +69,4 @@ label {
 
 button {
     background-color: rgb(106, 106, 255)!important;
-}
-
-#header {
-    height: 5rem!important;
 }
