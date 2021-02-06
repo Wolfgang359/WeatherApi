@@ -1,42 +1,55 @@
 $(document).ready(function () {
     console.log("Ready!");
-
-
     var APIkey = "fa8df56b2be812e87178b515521ee95f";
     var Query;
     var searchHistory = $("#searchHistory");
     var lat;
     var long;
-
-
+    var btnArr = [];
 
     $("#submit-btn").on("click", function () {
-        QUERYFUNCTION();
+        var city = $("#searchBar").val();
+
+        if (btnArr.includes(city)) {
+            QUERYFUNCTION();
+            console.log(btnArr);
+        } else {
+            btnArr.push(city);
+            createCityButton(city);
+            QUERYFUNCTION();
+            console.log(btnArr);
+        };
     });
 
     $("input").bind("keypress", function (i) {
+        var city = $("#searchBar").val();
         if (i.keyCode == 13) {
-            QUERYFUNCTION();
+            if (btnArr.includes(city)) {
+                QUERYFUNCTION();
+                console.log(btnArr);
+            } else {
+                btnArr.push(city);
+                createCityButton(city);
+                QUERYFUNCTION();
+                console.log(btnArr);
+            };
         }
     });
 
-    $(".otherBtn").on("click", function () {
+    $("body").on("click", "button", function () {
+
         console.log("this is any other button");
         Query = this.innerHTML;
         todayAPIInfo(Query);
         forecastAPIInfo(Query);
     });
 
-
     function QUERYFUNCTION() {
         console.log("This is the go button");
         Query = $("#searchBar").val();
-        createCityButton(Query);
         todayAPIInfo(Query);
         forecastAPIInfo(Query);
-    }
-
-
+    };
 
     function createCityButton(newCity) {
         console.log("Creating a button for " + newCity);
@@ -47,7 +60,6 @@ $(document).ready(function () {
         BTN.append(Txt);
         searchHistory.append(BTN);
     };
-
 
     function todayAPIInfo(city) {
         var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIkey + "&units=imperial";
@@ -128,5 +140,4 @@ $(document).ready(function () {
             };
         });
     };
-
 });
